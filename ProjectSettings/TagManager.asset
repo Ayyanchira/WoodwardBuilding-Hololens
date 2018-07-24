@@ -9,6 +9,10 @@ TagManager:
   - vuforiaUI
   - networkManager
   - clientCube
+  - vuMarkParent
+  - vuMark404
+  - vuMark412
+  - vuMark437
   layers:
   - Default
   - TransparentFX
