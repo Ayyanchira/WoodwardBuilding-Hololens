@@ -5,16 +5,8 @@ using UnityEngine.Networking;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public class customMessage : MessageBase
-    {
-        public string deviceType;
-        public Vector3 devicePosition;
-    }
-
-    // public GameObject ARCamera;
     GameObject spawnedPlayer;
     GameObject ARCamera;
-    NetworkIdentity ownID;
     Vector3 currentPos;
     
 
@@ -29,10 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         spawnedPlayer.transform.position = ARCamera.transform.position;
-        currentPos = spawnedPlayer.transform.position;
+        currentPos = spawnedPlayer.transform.position; //saving it for use in another script
         spawnedPlayer.transform.rotation = ARCamera.transform.rotation;
-
-
-
     }
 }

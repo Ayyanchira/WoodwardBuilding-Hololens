@@ -5,6 +5,9 @@ Copyright (c) 2010-2014 Qualcomm Connected Experiences, Inc.
 All Rights Reserved.
 Confidential and Proprietary - Protected under copyright and other laws.
 ==============================================================================*/
+// At least 3 scripts are requried for every Vuforia image target
+//      -> "Image Target Behaviour," "Turn Off Behaviour," "DefaultTrackableEventHandler"
+//
 
 using UnityEngine;
 using Vuforia;
@@ -21,7 +24,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     public Vector3 syncPosition;
     public bool trackedImage;
     public string imageName;
-    public GameObject markPos;
+    public GameObject markPos; //each vuforia marker has a gameobject with the needed transform
     #endregion //PUBLIC_MEMBER_VARIABLES
 
     #region PRIVATE_MEMBER_VARIABLES
@@ -36,7 +39,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         if (mTrackableBehaviour)
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
 
-        trackedImage = false;
+        trackedImage = false; //first image not tracked yet
     }
 
     #endregion // UNTIY_MONOBEHAVIOUR_METHODS
@@ -51,8 +54,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     {
         if (newStatus == TrackableBehaviour.Status.DETECTED || newStatus == TrackableBehaviour.Status.TRACKED || newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-            //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
-            OnTrackingFound(mTrackableBehaviour);
+            OnTrackingFound(mTrackableBehaviour); //passing the object containing details about the tracked object
         }
         else if (previousStatus == TrackableBehaviour.Status.TRACKED && newStatus == TrackableBehaviour.Status.NOT_FOUND)
         {
@@ -72,6 +74,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     #region PRIVATE_METHODS
 
+    //called when image target is tracked
     protected virtual void OnTrackingFound(TrackableBehaviour trackedObject)
     {
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
@@ -91,28 +94,17 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             component.enabled = true;
 
         syncPosition = markPos.transform.position; //get Vector3 position of vuforia image that was tracked
-        imageName = trackedObject.TrackableName;
+        imageName = trackedObject.TrackableName; //name of vuforia image target tracked
         Debug.Log("Tracked " + imageName + " at " + syncPosition);
-        trackedImage = true;
+        trackedImage = true; //first image has been tracked
 
-        GameObject parent = GameObject.Find("vuMarks");
-        VuMarkHandler parentScript = parent.GetComponent<VuMarkHandler>();
-        parentScript.trackedChild = imageName;
+        GameObject parent = GameObject.Find("vuMarks"); //look for gameobject with the name "vuMarks"
+        VuMarkHandler parentScript = parent.GetComponent<VuMarkHandler>(); //getting the script attached to "vuMarks"
+        parentScript.trackedChild = imageName; //trackedChild is given a value
 
     }
-
-    /*
-        woodwardFloor.transform.position = mapPosition;
-        woodwardFloor.transform.rotation = mapRotation
-        VuforiaBehaviour.Instance.enabled = false;
-
-        client.RegisterHandler(messageID, receiveServerMessage);
-
-        Vector3 trackPosition = transform.position;
-        trackPosition[0] += 2;
-        MessageToServer(trackPosition);
-    */
-
+    
+    //no need to mess with this function, called when image target lost
     protected virtual void OnTrackingLost()
     {
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
