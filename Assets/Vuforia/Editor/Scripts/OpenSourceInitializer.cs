@@ -61,5 +61,10 @@ public static class OpenSourceInitializer
         {
             go.AddComponent<DefaultInitializationErrorHandler>();
         }
+
+        public void AddDefaultSmartTerrainEventHandler(GameObject go, PropBehaviour propBehaviour, SurfaceBehaviour surfaceBehaviour)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

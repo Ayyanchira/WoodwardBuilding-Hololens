@@ -2464,7 +2464,7 @@ GameObject:
   - component: {fileID: 11499414}
   - component: {fileID: 11401954}
   - component: {fileID: 114593871428788132}
-  - component: {fileID: 114963634876522622}
+  - component: {fileID: 114259225346801210}
   m_Layer: 0
   m_Name: Keyboard
   m_TagString: Untagged
@@ -26307,6 +26307,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114259225346801210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aebab3047f2113489ca3eb8423228b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 22335612}
 --- !u!114 &114273169164405522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26369,9 +26381,9 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 11407834}
   m_TextComponent: {fileID: 11443704}
-  m_Placeholder: {fileID: 0}
+  m_Placeholder: {fileID: 11479558}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
@@ -26629,18 +26641,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114963634876522622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 146120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aebab3047f2113489ca3eb8423228b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 22335612}
 --- !u!114 &114975676486787642
 MonoBehaviour:
   m_ObjectHideFlags: 1

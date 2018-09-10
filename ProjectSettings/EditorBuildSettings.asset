@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Woodward.unity
-    guid: c60273f7199c74443b9880cf9baadb7c
+    path: Assets/Scenes/WoodwardV2.unity
+    guid: 99dbe7d7beee96c4bb272ef4b40044b7
